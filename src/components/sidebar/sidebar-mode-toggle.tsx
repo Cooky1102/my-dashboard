@@ -20,7 +20,7 @@ const SidebarModeToggle = () => {
   return (
     <Sheet open={open} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="ghost" size="icon">
           <Bars3Icon className="h-6 w-6" />
         </Button>
       </SheetTrigger>

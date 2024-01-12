@@ -2,9 +2,12 @@ import Sidebar from "@/components/sidebar/sidebar.tsx";
 import { Outlet } from "react-router-dom";
 import Header from "@/components/header.tsx";
 
+/*
+  参考的 https://lotru.devias.io/dashboard，body背景无论主题固定黑色
+*/
 const DashboardLayout = () => {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col bg-appBackground">
       {/* Left */}
       <Sidebar />
 

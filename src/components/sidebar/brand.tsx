@@ -1,8 +1,17 @@
-import LogoIcon from "@/components/sidebar/logo.tsx";
+import LogoIcon from "@/components/svg-react/logo.tsx";
+import React from "react";
+import { cn } from "@/lib/utils.ts";
 
-const Brand = () => {
+interface BrandProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const Brand = ({ className }: BrandProps) => {
   return (
-    <div className="my-5 flex items-center gap-5 font-bold text-xl">
+    <div
+      className={cn(
+        "flex items-center justify-center gap-5 font-bold text-xl",
+        className,
+      )}
+    >
       <LogoIcon />
       <span>Ezreal</span>
     </div>

@@ -28,7 +28,7 @@ export function dashboardLoader({ request }: LoaderFunctionArgs) {
   if (!fakeAuthProvider.checkAuth()) {
     const params = new URLSearchParams();
     params.set("from", new URL(request.url).pathname);
-    return redirect("/auth/login?" + params.toString());
+    return redirect("/login?" + params.toString());
   }
   return null;
 }

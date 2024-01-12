@@ -1,10 +1,6 @@
 import { ThemeModeToggle } from "@/components/theme-mode-toggle.tsx";
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from "@/components/ui/avatar.tsx";
 import SidebarModeToggle from "@/components/sidebar/sidebar-mode-toggle.tsx";
+import ProfileToggle from "@/components/profile-toggle.tsx";
 
 const Header = () => {
   return (
@@ -15,11 +11,7 @@ const Header = () => {
         </div>
         <div className="flex items-center gap-5">
           <ThemeModeToggle />
-
-          <Avatar>
-            <AvatarImage src="https://lh3.googleusercontent.com/ogw/ANLem4bL_87g_GXVCYVFmljA2_ersBZQMlafjcTvrAb3=s64-c-mo" />
-            <AvatarFallback>A</AvatarFallback>
-          </Avatar>
+          <ProfileToggle />
         </div>
       </div>
     </header>

@@ -9,17 +9,13 @@ const queryClient = new QueryClient();
 
 export default function Root() {
   // const navigate = useNavigate();
-  // let location = useLocation();
+  // const location = useLocation();
   //
   // useEffect(() => {
   //   if (location.pathname === "/") {
   //     navigate("/dashboard");
   //   }
-  //   if (location.pathname === "/auth/login") {
-  //     navigate("/dashboard/overview");
-  //   }
-  //   console.log(location);
-  // }, [location]);
+  // }, [navigate, location]);
 
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">

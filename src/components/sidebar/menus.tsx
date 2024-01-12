@@ -6,7 +6,7 @@ import SidebarItem from "@/components/sidebar/sidebar-item.tsx";
 const Menus = () => {
   return (
     <div className="h-full w-full p-5 overflow-y-auto dark text-foreground">
-      <Brand />
+      <Brand className="justify-start my-5" />
       {routes.map((route) => (
         <Fragment key={route.category}>
           <div className="h-12 font-semibold flex items-center">

@@ -20,6 +20,7 @@ export const fakeAuthProvider: AuthProvider = {
     fakeAuthProvider.username = username;
   },
   async signout() {
+    localStorage.removeItem("token");
     fakeAuthProvider.isAuthenticated = false;
     fakeAuthProvider.username = "";
   },

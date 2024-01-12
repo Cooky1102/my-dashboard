@@ -9,8 +9,8 @@
     --foreground: 222.2 84% 4.9%;
 
     /* 为该项目自定义的高亮色 */
-    --active: 263 69.3% 42.2%;
-    --active-foreground: 0 85.7% 97.3%;
+    --active: 244 88% 57%;
+    --active-foreground: 0 0% 100%;
 
     /*<Card /> 的背景颜色*/
     --card: 0 0% 100%;
@@ -86,11 +86,8 @@
   * {
     @apply border-border;
   }
-  /*
-  参考的 https://lotru.devias.io/dashboard，body背景无论主题固定黑色
-*/
   body {
-    @apply bg-appBackground min-h-screen antialiased;
+    @apply bg-background min-h-screen antialiased;
   }
   html {
     @apply scroll-smooth;
