@@ -47,8 +47,12 @@
 
     --radius: 0.5rem;
 
-    --app-background: 222.2 84% 4.9%;
-    --container-background: 0 0% 100%;
+    /*根据设计，用于总背景*/
+    --app: 222.2 84% 4.9%;
+    --app-foreground: 210 40% 98%;
+
+    /*用于内容展示主区域*/
+    --main: 0 0% 100%;
   }
 
   .dark {
@@ -79,6 +83,8 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --main: 210 10% 11%;
   }
 }
 
@@ -86,11 +92,11 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background min-h-screen antialiased;
-  }
   html {
     @apply scroll-smooth;
+  }
+  body {
+    @apply text-foreground bg-background min-h-screen antialiased;
   }
 }
 

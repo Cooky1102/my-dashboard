@@ -7,14 +7,14 @@ import Header from "@/components/header.tsx";
 */
 const DashboardLayout = () => {
   return (
-    <div className="h-full flex flex-col bg-appBackground">
+    <div className="h-full flex flex-col bg-app overflow-auto">
       {/* Left */}
       <Sidebar />
 
       {/* Right */}
       <div className="xl:pr-6 xl:pb-6 xl:pl-72 flex-1 flex flex-col">
-        <div className="bg-white xl:rounded-b-2xl flex-1">
-          <Header />
+        <div className="bg-main dark:bg-main xl:rounded-b-2xl flex-1">
+          <Header key="dashboard" />
           <main className="p-6">
             <Outlet />
           </main>
