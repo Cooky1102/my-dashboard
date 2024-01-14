@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "@/routes";
 import "./styles/index.css";
 import "./styles/router.css";
+import "./styles/calendar.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

@@ -1,0 +1,55 @@
+@import "react-big-calendar/lib/sass/styles";
+
+.rbc-calendar {
+  [type="button"] {
+    @apply text-foreground text-sm font-medium transition-colors;
+  }
+
+  .rbc-toolbar {
+    @apply mb-5;
+    .rbc-toolbar-label {
+      @apply font-semibold;
+    }
+
+    [type="button"] {
+      // 去掉自带的
+      @apply shadow-none;
+
+      // variant: outline
+      @apply rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+
+      // size
+      @apply h-10 px-4 py-2;
+
+      // active
+      &.rbc-active {
+        @apply border-none bg-active text-active-foreground;
+      }
+    }
+  }
+
+  .rbc-month-view {
+    @apply rounded-md;
+
+    [type="button"] {
+      @apply h-9 rounded-md px-3 hover:bg-accent hover:text-accent-foreground;
+    }
+
+    .rbc-month-header {
+      @apply h-12;
+
+      .rbc-header {
+        @apply flex items-center justify-center;
+      }
+    }
+
+    .rbc-month-row {
+      .rbc-today {
+        @apply bg-active text-active-foreground;
+      }
+      .rbc-off-range-bg {
+        @apply bg-muted text-muted-foreground;
+      }
+    }
+  }
+}
