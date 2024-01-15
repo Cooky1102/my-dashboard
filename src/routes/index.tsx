@@ -13,6 +13,7 @@ import AnalyticsPage from "@/app/dashboard/analytics/page.tsx";
 import ProductsListPage from "@/app/products/page.tsx";
 import CreateProductsPage from "@/app/products/create/page.tsx";
 import NotFoundPage from "@/app/not-found/page.tsx";
+import CalendarPage from "@/app/calendar/page.tsx";
 
 const LoginPage = lazy(() => import("@/app/login/page.tsx"));
 
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
             path: "products/create",
             loader: dashboardLoader,
             element: <CreateProductsPage />,
+          },
+          {
+            path: "calendar",
+            loader: dashboardLoader,
+            element: <CalendarPage />,
           },
         ],
       },

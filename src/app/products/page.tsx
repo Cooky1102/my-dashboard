@@ -1,20 +1,9 @@
-import { Calendar, dayjsLocalizer } from "react-big-calendar";
-import dayjs from "dayjs";
-
-const localizer = dayjsLocalizer(dayjs);
+import AgTable from "@/components/ag-table.tsx";
 
 const ProductsListPage = () => {
   return (
     <>
-      <div>
-        <Calendar
-          localizer={localizer}
-          // events={myEventsList}
-          startAccessor="start"
-          endAccessor="end"
-          style={{ height: 500 }}
-        />
-      </div>
+      <AgTable />
     </>
   );
 };

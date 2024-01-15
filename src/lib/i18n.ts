@@ -17,7 +17,7 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    fallbackLng: "en_US",
+    fallbackLng: "en_US", // Language to use if translations in user language are not available.
     // debug: true,
 
     // https://github.com/i18next/i18next-localstorage-backend
