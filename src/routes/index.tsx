@@ -1,14 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
+
 import { dashboardLoader, rootLoader } from "@/lib/loader.ts";
 import Root from "@/app/root.tsx";
 import RootErrorPage from "@/app/global-error.tsx";
-
 /* dashboard */
 import DashboardLayout from "@/app/dashboard/layout.tsx";
 import OverviewPage from "@/app/dashboard/overview/page.tsx";
 import AnalyticsPage from "@/app/dashboard/analytics/page.tsx";
-
 /* products */
 import ProductsListPage from "@/app/products/page.tsx";
 import CreateProductsPage from "@/app/products/create/page.tsx";

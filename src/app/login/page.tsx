@@ -1,4 +1,8 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -9,9 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { fakeAuthProvider } from "@/lib/auth.ts";
 import { LoginFormSchema } from "@/lib/schema.ts";
 import Brand from "@/components/sidebar/brand.tsx";

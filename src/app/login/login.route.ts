@@ -1,9 +1,10 @@
 import { LoaderFunctionArgs, redirect } from "react-router-dom";
+
 import { fakeAuthProvider } from "@/lib/auth.ts";
 
 export async function action({ request }: LoaderFunctionArgs) {
-  let formData = await request.formData();
-  let username = formData.get("username") as string | null;
+  const formData = await request.formData();
+  const username = formData.get("username") as string | null;
 
   // Validate our form inputs and return validation errors via useActionData()
   if (!username) {
@@ -24,7 +25,7 @@ export async function action({ request }: LoaderFunctionArgs) {
     };
   }
 
-  let redirectTo = formData.get("redirectTo") as string | null;
+  const redirectTo = formData.get("redirectTo") as string | null;
   return redirect(redirectTo || "/");
 }
 

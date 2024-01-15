@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+
 import { Button, buttonVariants } from "@/components/ui/button";
 import { MenusConfig } from "@/types/sidebar.ts";
 import { iconClasses } from "@/routes/sidebar.tsx";
@@ -11,7 +13,6 @@ import {
   AccordionContent,
   AccordionItem,
 } from "@/components/ui/accordion";
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
 const SidebarItem = ({ path, name, icon, submenus }: MenusConfig) => {
   const [isExpanded, setIsExpanded] = useState(false);

@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button.tsx";
 import { LanguageIcon } from "@heroicons/react/24/solid";
+import { useTranslation } from "react-i18next";
 
+import { Button } from "@/components/ui/button.tsx";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu.tsx";
-import { useTranslation } from "react-i18next";
 import { iconClasses } from "@/routes/sidebar.tsx";
 import { cn } from "@/lib/utils.ts";
 

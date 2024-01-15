@@ -3,6 +3,7 @@ import {
   Squares2X2Icon,
   CalendarIcon,
 } from "@heroicons/react/24/solid";
+
 import { SidebarRouteConfig } from "@/types/sidebar.ts";
 
 export const iconClasses = `h-6 w-6`;

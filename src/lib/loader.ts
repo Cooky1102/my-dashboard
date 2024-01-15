@@ -1,4 +1,5 @@
 import { LoaderFunctionArgs, redirect } from "react-router-dom";
+
 import { fakeAuthProvider } from "@/lib/auth.ts";
 
 export function rootLoader({ request }: LoaderFunctionArgs) {

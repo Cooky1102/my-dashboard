@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 
 const NotFoundIcon = ({
   width = "1120",
@@ -787,4 +787,4 @@ const NotFoundIcon = ({
     </svg>
   );
 };
-export default React.memo(NotFoundIcon);
+export default memo(NotFoundIcon);

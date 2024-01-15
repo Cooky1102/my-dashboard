@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 
 // <LogoIcon size="30" fill="var(--foreground)" /> don't work
 const LogoIcon = ({ size = "30", fill = "#fff", ...other }) => {
@@ -23,4 +23,4 @@ const LogoIcon = ({ size = "30", fill = "#fff", ...other }) => {
     </svg>
   );
 };
-export default React.memo(LogoIcon);
+export default memo(LogoIcon);

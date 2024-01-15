@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
+
 import NotFoundIcon from "@/components/svg-react/not-found-icon.tsx";
 import { Button } from "@/components/ui/button.tsx";
-import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (

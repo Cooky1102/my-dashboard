@@ -1,4 +1,5 @@
 import React from "react";
+
 import { RequiredOneOf } from "@/types/assist.ts";
 
 export type SidebarRouteConfig = {

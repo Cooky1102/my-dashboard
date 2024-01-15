@@ -14,6 +14,8 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,7 +36,6 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar.tsx";
 import { fakeAuthProvider } from "@/lib/auth.ts";
-import { useNavigate } from "react-router-dom";
 
 const ProfileToggle = () => {
   const navigate = useNavigate();

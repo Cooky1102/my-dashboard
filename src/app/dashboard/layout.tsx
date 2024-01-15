@@ -1,5 +1,6 @@
-import Sidebar from "@/components/sidebar/sidebar.tsx";
 import { Outlet } from "react-router-dom";
+
+import Sidebar from "@/components/sidebar/sidebar.tsx";
 import Header from "@/components/header.tsx";
 
 /*
