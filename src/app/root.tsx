@@ -18,7 +18,7 @@ export default function Root() {
   // }, [navigate, location]);
 
   return (
-    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light">
       <QueryClientProvider client={queryClient}>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />

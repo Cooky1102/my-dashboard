@@ -5,6 +5,7 @@ import router from "@/routes";
 import "./styles/index.css";
 import "./styles/router.css";
 import "./styles/calendar.scss";
+import "./lib/i18n.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

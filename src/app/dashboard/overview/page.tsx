@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 
 const OverviewPage = () => {
-  return <div>overview</div>;
+  const { t } = useTranslation();
+
+  return <h1>{t("title")}</h1>;
 };
 
 export default OverviewPage;
