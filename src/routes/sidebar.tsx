@@ -3,7 +3,7 @@ import {
   Squares2X2Icon,
   CalendarIcon,
 } from "@heroicons/react/24/solid";
-import { ShieldX } from "lucide-react";
+import { XSquare } from "lucide-react";
 
 import { SidebarRouteConfig } from "@/types/sidebar.ts";
 
@@ -70,8 +70,12 @@ const routes: SidebarRouteConfig[] = [
     menus: [
       {
         name: "Error",
-        icon: <ShieldX className={`${iconClasses}`} />,
+        icon: <XSquare className={`${iconClasses}`} />,
         submenus: [
+          {
+            path: "/400",
+            name: "400 (client error)",
+          },
           {
             path: "/401",
             name: "401",

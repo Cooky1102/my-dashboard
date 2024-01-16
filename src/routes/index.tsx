@@ -15,6 +15,7 @@ import NotFoundPage from "@/app/error/not-found/page.tsx";
 import CalendarPage from "@/app/calendar/page.tsx";
 import UnAuthorizedErrorPage from "@/app/error/unauthorized-error/page.tsx";
 import InternalServerErrorPage from "@/app/error/internal-server-error/page.tsx";
+import TriggerDemo from "@/app/error/global-error/trigger-demo.tsx";
 
 const LoginPage = lazy(() => import("@/app/login/page.tsx"));
 
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
             element: <CalendarPage />,
           },
         ],
+      },
+      {
+        path: "400",
+        element: <TriggerDemo />,
       },
       {
         path: "401",
