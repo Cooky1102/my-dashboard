@@ -3,6 +3,7 @@ import {
   Squares2X2Icon,
   CalendarIcon,
 } from "@heroicons/react/24/solid";
+import { ShieldX } from "lucide-react";
 
 import { SidebarRouteConfig } from "@/types/sidebar.ts";
 
@@ -61,6 +62,29 @@ const routes: SidebarRouteConfig[] = [
         path: "/dashboard/calendar",
         name: "Calendar",
         icon: <CalendarIcon className={`${iconClasses}`} />,
+      },
+    ],
+  },
+  {
+    category: "Pages",
+    menus: [
+      {
+        name: "Error",
+        icon: <ShieldX className={`${iconClasses}`} />,
+        submenus: [
+          {
+            path: "/401",
+            name: "401",
+          },
+          {
+            path: "/404",
+            name: "404",
+          },
+          {
+            path: "/500",
+            name: "500",
+          },
+        ],
       },
     ],
   },

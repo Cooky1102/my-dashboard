@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button.tsx";
 
 const NotFoundPage = () => {
   return (
-    <div className="h-full flex flex-col items-center justify-center gap-20">
-      <NotFoundIcon />
+    <div className="h-full flex flex-col items-center justify-center gap-10">
+      {/*  TODO */}
+      <NotFoundIcon className="bg-white" />
 
-      <div className="space-y-10">
+      <div className="space-y-6">
         <p className="text-4xl font-bold">Page not found</p>
 
         <p className="text-2xl">

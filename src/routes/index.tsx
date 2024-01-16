@@ -3,7 +3,7 @@ import { lazy } from "react";
 
 import { dashboardLoader, rootLoader } from "@/lib/loader.ts";
 import Root from "@/app/root.tsx";
-import RootErrorPage from "@/app/global-error.tsx";
+import GlobalErrorPage from "@/app/error/global-error/page.tsx";
 /* dashboard */
 import DashboardLayout from "@/app/dashboard/layout.tsx";
 import OverviewPage from "@/app/dashboard/overview/page.tsx";
@@ -11,8 +11,10 @@ import AnalyticsPage from "@/app/dashboard/analytics/page.tsx";
 /* products */
 import ProductsListPage from "@/app/products/page.tsx";
 import CreateProductsPage from "@/app/products/create/page.tsx";
-import NotFoundPage from "@/app/not-found/page.tsx";
+import NotFoundPage from "@/app/error/not-found/page.tsx";
 import CalendarPage from "@/app/calendar/page.tsx";
+import UnAuthorizedErrorPage from "@/app/error/unauthorized-error/page.tsx";
+import InternalServerErrorPage from "@/app/error/internal-server-error/page.tsx";
 
 const LoginPage = lazy(() => import("@/app/login/page.tsx"));
 
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
     path: "/",
     loader: rootLoader,
     element: <Root />,
-    errorElement: <RootErrorPage />,
+    errorElement: <GlobalErrorPage />,
     children: [
       {
         path: "login",
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
             element: <CalendarPage />,
           },
         ],
+      },
+      {
+        path: "401",
+        element: <UnAuthorizedErrorPage />,
+      },
+      {
+        path: "500",
+        element: <InternalServerErrorPage />,
       },
       {
         path: "*",

@@ -1,6 +1,9 @@
 import { useRouteError } from "react-router-dom";
 
-const RootErrorPage = () => {
+/*
+*  client error
+* */
+const GlobalErrorPage = () => {
   const error = useRouteError();
   console.error(error);
 
@@ -15,4 +18,4 @@ const RootErrorPage = () => {
   );
 };
 
-export default RootErrorPage;
+export default GlobalErrorPage;

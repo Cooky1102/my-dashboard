@@ -1,8 +1,8 @@
 import { memo } from "react";
 
 const NotFoundIcon = ({
-  width = "1120",
-  height = "450",
+  width = "560",
+  height = "225",
   fill = "rgb(24,24,24)",
   ...other
 }) => {
