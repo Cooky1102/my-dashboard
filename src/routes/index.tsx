@@ -19,7 +19,7 @@ import TriggerDemo from "@/app/error/global-error/trigger-demo.tsx";
 
 const LoginPage = lazy(() => import("@/app/login/page.tsx"));
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
     loader: rootLoader,
@@ -81,6 +81,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+const router = createBrowserRouter(routes, {
+  // basename: "/my-dashboard",
+});
 
 export default router;

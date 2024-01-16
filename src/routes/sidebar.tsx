@@ -42,22 +42,6 @@ const routes: SidebarRouteConfig[] = [
           },
         ],
       },
-
-      {
-        name: "Products2",
-        icon: <Squares2X2Icon className={`${iconClasses}`} />,
-        submenus: [
-          {
-            path: "/dashboard/products",
-            name: "List Products",
-          },
-          {
-            path: "/dashboard/products/create",
-            name: "Create Products",
-          },
-        ],
-      },
-
       {
         path: "/dashboard/calendar",
         name: "Calendar",

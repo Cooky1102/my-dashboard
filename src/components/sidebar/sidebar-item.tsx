@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
@@ -19,16 +19,19 @@ const SidebarItem = ({ path, name, icon, submenus }: MenusConfig) => {
 
   if (path) {
     return (
-      <Link
+      <NavLink
         to={path}
-        className={buttonVariants({
-          variant: "ghost",
-          className: "w-full !justify-normal gap-3",
-        })}
+        end
+        className={({ isActive }) =>
+          buttonVariants({
+            variant: isActive ? "active" : "ghost",
+            className: "w-full !justify-normal gap-3",
+          })
+        }
       >
         {icon}
         <span>{name}</span>
-      </Link>
+      </NavLink>
     );
   }
 

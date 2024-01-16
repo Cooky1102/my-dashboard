@@ -11,16 +11,15 @@ const Header = () => {
 
   return (
     <header
-      className={cn("sticky left-0 top-0", {
+      className={cn("sticky left-0 top-0 z-10", {
         "pt-0": !isAuthenticated,
         "xl:pt-6 xl:bg-app": isAuthenticated,
       })}
     >
       <div
         className={cn(
-          "h-20 px-5 flex items-center justify-between xl:justify-end",
+          "h-20 px-5 flex items-center justify-between xl:justify-end bg-main",
           { "border-b xl:rounded-t-2xl": isAuthenticated },
-          "bg-main dark:bg-main",
           { "justify-end": !isAuthenticated },
         )}
       >

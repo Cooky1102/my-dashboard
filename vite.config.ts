@@ -11,4 +11,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // base: "/my-dashboard/", config for GitHub pages
 });

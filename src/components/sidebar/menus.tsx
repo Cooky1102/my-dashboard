@@ -10,7 +10,7 @@ const Menus = () => {
       <Brand className="justify-start my-5" />
       {routes.map((route) => (
         <Fragment key={route.category}>
-          <div className="h-12 font-semibold flex items-center">
+          <div className="h-12 flex items-center font-semibold">
             {route.category}
           </div>
           <ul>
