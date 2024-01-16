@@ -1,11 +1,22 @@
 import { AgGridReact } from "ag-grid-react"; // React Grid Logic
+import { ColDef } from "ag-grid-community"; // Column Definitions
 import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import { useState } from "react"; // Theme
 
+interface IRow {
+  mission: string;
+  company: string;
+  location: string;
+  date: string;
+  rocket: string;
+  price: number;
+  successful: boolean;
+}
+
 const AgTable = () => {
   // Row Data: The data to be displayed.
-  const [rowData] = useState([
+  const [rowData] = useState<IRow[]>([
     {
       mission: "Voyager",
       company: "NASA",
@@ -15,28 +26,10 @@ const AgTable = () => {
       price: 86580000,
       successful: true,
     },
-    {
-      mission: "Apollo 13",
-      company: "NASA",
-      location: "Kennedy Space Center",
-      date: "1970-04-11",
-      rocket: "Saturn V",
-      price: 3750000,
-      successful: false,
-    },
-    {
-      mission: "Falcon 9",
-      company: "SpaceX",
-      location: "Cape Canaveral",
-      date: "2015-12-22",
-      rocket: "Falcon 9",
-      price: 9750000,
-      successful: true,
-    },
   ]);
 
   // Column Definitions: Defines & controls grid columns.
-  const [colDefs] = useState([
+  const [colDefs] = useState<ColDef[]>([
     { field: "mission" },
     { field: "company" },
     { field: "location" },

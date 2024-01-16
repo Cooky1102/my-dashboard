@@ -1,8 +1,8 @@
 import { Outlet, useNavigation } from "react-router-dom";
+import { Suspense } from "react";
 
 import Sidebar from "@/components/sidebar/sidebar.tsx";
 import Header from "@/components/header.tsx";
-import { Suspense } from "react";
 import { cn } from "@/lib/utils.ts";
 import SuspenseFallback from "@/components/skeleton/suspense-fallback.tsx";
 

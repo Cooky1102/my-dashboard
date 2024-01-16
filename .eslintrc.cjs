@@ -18,6 +18,9 @@ module.exports = {
     //   "warn",
     //   { allowConstantExport: true },
     // ],
+
+    // turn on errors for missing imports
+    "import/no-unresolved": "error",
     "import/default": "off",
     "import/no-named-as-default-member": "off",
     "import/order": [
@@ -26,14 +29,10 @@ module.exports = {
         warnOnUnassignedImports: true,
         "newlines-between": "always",
         groups: [
-          "builtin",
-          "external",
+          ["builtin", "external"],
           "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type",
+          ["parent", "sibling", "index"],
+          ["object", "type", "unknown"],
         ],
       },
     ],

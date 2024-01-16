@@ -1,5 +1,6 @@
 import { LanguageIcon } from "@heroicons/react/24/solid";
 import { useTranslation } from "react-i18next";
+import { CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button.tsx";
 import {
@@ -16,7 +17,6 @@ import {
 import { iconClasses } from "@/routes/sidebar.tsx";
 import { cn } from "@/lib/utils.ts";
 import { useToast } from "@/components/ui/use-toast";
-import { CheckCircle2 } from "lucide-react";
 
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
