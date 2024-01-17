@@ -17,7 +17,7 @@ export function rootLoader({ request }: LoaderFunctionArgs) {
   return null;
 }
 
-export function loginLoader({ request }: LoaderFunctionArgs) {
+export function loginLoader() {
   // If the user is already logged in, redirect them to the homepage
   if (fakeAuthProvider.isAuthenticated) {
     return redirect("/dashboard");

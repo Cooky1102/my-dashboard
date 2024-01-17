@@ -31,7 +31,7 @@ const LanguageToggle = () => {
           <CheckCircle2 className="w-6 h-6 text-green-600" />
           <span>Language changed</span>
         </div>
-      ) as any,
+      ),
     });
   };
 

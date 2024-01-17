@@ -19,7 +19,6 @@ module.exports = {
     //   { allowConstantExport: true },
     // ],
 
-    // turn on errors for missing imports
     "import/no-unresolved": "error",
     "import/default": "off",
     "import/no-named-as-default-member": "off",
