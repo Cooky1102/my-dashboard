@@ -6,7 +6,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button.tsx";
 import Menus from "@/components/sidebar/menus.tsx";
 
-
 const SidebarModeToggle = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);

@@ -1,6 +1,6 @@
 /*
-* 作为触发错误使用
-* */
+ * 作为触发错误使用
+ * */
 const TriggerDemo = () => {
   throw new Error("Trigger Demo Error");
 };
