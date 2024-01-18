@@ -3,13 +3,14 @@ import { ActivityIcon, CreditCardIcon, DollarSignIcon, UsersRoundIcon } from "lu
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { RecentSales } from "@/app/dashboard/overview/recent-sales.tsx";
+import Overview from "@/app/dashboard/overview/overview.tsx";
 
 const OverviewPage = () => {
   // const { t } = useTranslation();
 
   return (
-    <div className="space-y-4">
-      <div className="grid gap-4 grid-cols-2 xl:grid-cols-4">
+    <div className="space-y-6">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center space-y-0 pb-2">
             <div className="mr-3 p-1 rounded bg-yellow-300">
@@ -59,14 +60,16 @@ const OverviewPage = () => {
           </CardContent>
         </Card>
       </div>
-      <div className="grid gap-4 grid-cols-1 xl:grid-cols-7">
-        <Card className="xl:col-span-4">
+      <div className="grid gap-6 grid-cols-1 xl:grid-cols-7">
+        <Card className="grid-cols-1 xl:col-span-4">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
-          <CardContent className="pl-2">{/*<Overview />*/}</CardContent>
+          <CardContent className="h-96">
+            <Overview />
+          </CardContent>
         </Card>
-        <Card className="xl:col-span-3">
+        <Card className="grid-cols-1 xl:col-span-3">
           <CardHeader>
             <CardTitle>Recent Sales</CardTitle>
             <CardDescription>You made 265 sales this month.</CardDescription>
