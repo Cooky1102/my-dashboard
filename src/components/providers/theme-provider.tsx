@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { THEME_STORAGE_KEY } from "@/lib/config.ts";
-
-type Theme = "dark" | "light" | "system";
+import { ETheme, Theme } from "@/types/theme.ts";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -16,15 +15,17 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: "system",
+  theme: ETheme.system,
   setTheme: () => null,
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
+const prefersDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
+  defaultTheme = ETheme.system,
   storageKey = THEME_STORAGE_KEY,
   ...props
 }: ThemeProviderProps) {
@@ -33,26 +34,38 @@ export function ThemeProvider({
   );
 
   useEffect(() => {
-    const root = window.document.documentElement;
-
-    root.classList.remove("light", "dark");
-
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-
-      root.classList.add(systemTheme);
-      return;
+    function updateDocumentTheme(theme: Theme) {
+      // 移除之前的主题
+      const root = window.document.documentElement;
+      root.classList.remove(ETheme.light, ETheme.dark);
+      // 添加新的主题
+      root.classList.add(theme);
     }
 
-    root.classList.add(theme);
-  }, [theme]);
+    function handleSystemThemeChange(e: MediaQueryListEvent) {
+      const systemTheme = e.matches ? ETheme.dark : ETheme.light;
+      updateDocumentTheme(systemTheme);
+    }
+
+    if (theme === ETheme.system) {
+      const systemTheme = prefersDarkTheme.matches ? ETheme.dark : ETheme.light;
+      updateDocumentTheme(systemTheme);
+      localStorage.removeItem(storageKey);
+
+      // 订阅系统主题变化
+      prefersDarkTheme.addEventListener("change", handleSystemThemeChange);
+
+      // 移除订阅
+      return () => prefersDarkTheme.removeEventListener("change", handleSystemThemeChange);
+    }
+
+    updateDocumentTheme(theme);
+    localStorage.setItem(storageKey, theme);
+  }, [storageKey, theme]);
 
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
       setTheme(theme);
     },
   };

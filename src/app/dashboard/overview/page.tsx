@@ -65,7 +65,7 @@ const OverviewPage = () => {
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
-          <CardContent className="h-96">
+          <CardContent className="p-0 h-96">
             <Overview />
           </CardContent>
         </Card>

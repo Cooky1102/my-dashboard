@@ -22,7 +22,7 @@ export default function Root() {
   // }, [navigate, location]);
 
   return (
-    <ThemeProvider defaultTheme="light">
+    <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider delayDuration={300}>
           <Suspense fallback={<SuspenseFallback />}>
