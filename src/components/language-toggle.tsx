@@ -9,11 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu.tsx";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip.tsx";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
 import { iconClasses } from "@/routes/sidebar.tsx";
 import { cn } from "@/lib/utils.ts";
 import { useToast } from "@/components/ui/use-toast";
@@ -26,6 +22,7 @@ const LanguageToggle = () => {
     await i18n.changeLanguage(lng);
     toast({
       duration: 2000,
+      description: <div>123</div>,
       title: (
         <div className="flex gap-3">
           <CheckCircle2 className="w-6 h-6 text-green-600" />
@@ -50,16 +47,9 @@ const LanguageToggle = () => {
             </Button>
           </DropdownMenuTrigger>
         </TooltipTrigger>
-        <DropdownMenuContent
-          align="end"
-          onCloseAutoFocus={handleCloseAutoFocus}
-        >
-          <DropdownMenuItem onClick={() => handleChangeLng("zh_HK")}>
-            繁体中文
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleChangeLng("en_US")}>
-            English
-          </DropdownMenuItem>
+        <DropdownMenuContent align="end" onCloseAutoFocus={handleCloseAutoFocus}>
+          <DropdownMenuItem onClick={() => handleChangeLng("zh_HK")}>繁体中文</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleChangeLng("en_US")}>English</DropdownMenuItem>
         </DropdownMenuContent>
         <TooltipContent side="bottom">
           <p>Language</p>
