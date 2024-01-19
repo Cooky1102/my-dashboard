@@ -1,6 +1,12 @@
+import { memo } from "react";
 import { ResponsiveBar } from "@nivo/bar";
 
+import { useTheme } from "@/components/providers/theme-provider.tsx";
+import { nivoDarkTheme } from "@/lib/config.ts";
+
 const Overview = () => {
+  const { isDark } = useTheme();
+
   return (
     <ResponsiveBar
       data={data}
@@ -12,7 +18,7 @@ const Overview = () => {
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={({ id, data }) => String(data[`${id}Color`])}
-      // theme={theme === ''{}}
+      theme={isDark ? nivoDarkTheme : {}}
       enableLabel={false}
       borderRadius={7}
       borderColor={{
@@ -33,10 +39,9 @@ const Overview = () => {
       legends={[
         {
           dataFrom: "keys",
-          anchor: "top",
+          anchor: "top-right",
           direction: "row",
           justify: false,
-          translateX: 120,
           translateY: -50,
           itemsSpacing: 2,
           itemWidth: 100,
@@ -59,7 +64,7 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default memo(Overview);
 
 interface IData {
   [id: string]: string | number;

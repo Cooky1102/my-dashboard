@@ -55,7 +55,7 @@ const data = [
   {
     id: 5,
     name: "Sofia Davis",
-    email: "sofia.davis@email.com ddddd",
+    email: "sofia.davis@email.com",
     amount: 39,
     avatar: "https://picsum.photos/id/40/20/20",
   },

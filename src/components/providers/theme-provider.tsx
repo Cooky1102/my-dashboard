@@ -1,86 +1,105 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  PropsWithChildren,
+  Dispatch,
+} from "react";
 
 import { THEME_STORAGE_KEY } from "@/lib/config.ts";
 import { ETheme, Theme } from "@/types/theme.ts";
 
-type ThemeProviderProps = {
-  children: React.ReactNode;
-  defaultTheme?: Theme;
-  storageKey?: string;
-};
-
-type ThemeProviderState = {
+type ThemeState = {
+  isDark: boolean;
   theme: Theme;
-  setTheme: (theme: Theme) => void;
 };
 
-const initialState: ThemeProviderState = {
-  theme: ETheme.system,
-  setTheme: () => null,
+type ThemeAction = {
+  type: Theme;
 };
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 const prefersDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-export function ThemeProvider({
-  children,
-  defaultTheme = ETheme.system,
-  storageKey = THEME_STORAGE_KEY,
-  ...props
-}: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
-  );
+const ThemeContext = createContext<ThemeState>(null!);
+const ThemeDispatchContext = createContext<Dispatch<ThemeAction>>(null!);
+
+export function ThemeProvider({ children }: PropsWithChildren) {
+  const [themes, dispatch] = useReducer(themesReducer, null, createInitialThemes);
 
   useEffect(() => {
-    function updateDocumentTheme(theme: Theme) {
-      // 移除之前的主题
-      const root = window.document.documentElement;
-      root.classList.remove(ETheme.light, ETheme.dark);
-      // 添加新的主题
-      root.classList.add(theme);
-    }
+    // 移除之前的主题
+    const root = window.document.documentElement;
+    root.classList.remove(ETheme.light, ETheme.dark);
+    // 添加新的主题
+    root.classList.add(themes.isDark ? ETheme.dark : ETheme.light);
+  }, [themes.isDark]);
 
-    function handleSystemThemeChange(e: MediaQueryListEvent) {
-      const systemTheme = e.matches ? ETheme.dark : ETheme.light;
-      updateDocumentTheme(systemTheme);
+  useEffect(() => {
+    const theme = themes.theme;
+
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    function systemThemeListener(e: MediaQueryListEvent) {
+      dispatch({ type: ETheme.system });
     }
 
     if (theme === ETheme.system) {
-      const systemTheme = prefersDarkTheme.matches ? ETheme.dark : ETheme.light;
-      updateDocumentTheme(systemTheme);
-      localStorage.removeItem(storageKey);
+      localStorage.removeItem(THEME_STORAGE_KEY);
 
       // 订阅系统主题变化
-      prefersDarkTheme.addEventListener("change", handleSystemThemeChange);
+      prefersDarkTheme.addEventListener("change", systemThemeListener);
 
       // 移除订阅
-      return () => prefersDarkTheme.removeEventListener("change", handleSystemThemeChange);
+      return () => prefersDarkTheme.removeEventListener("change", systemThemeListener);
     }
 
-    updateDocumentTheme(theme);
-    localStorage.setItem(storageKey, theme);
-  }, [storageKey, theme]);
-
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      setTheme(theme);
-    },
-  };
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [themes.theme]);
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
+    <ThemeContext.Provider value={themes}>
+      <ThemeDispatchContext.Provider value={dispatch}>{children}</ThemeDispatchContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
 export const useTheme = () => {
-  const context = useContext(ThemeProviderContext);
+  const context = useContext(ThemeContext);
 
   if (context === undefined) throw new Error("useTheme must be used within a ThemeProvider");
 
   return context;
 };
+
+export const useThemeDispatch = () => {
+  const context = useContext(ThemeDispatchContext);
+
+  if (context === undefined)
+    throw new Error("useThemeDispatch must be used within a ThemeProvider");
+
+  return context;
+};
+
+function createInitialThemes(): ThemeState {
+  const theme = localStorage.getItem(THEME_STORAGE_KEY) as Theme;
+
+  if (theme) {
+    return { isDark: theme === ETheme.dark, theme };
+  }
+
+  return { isDark: prefersDarkTheme.matches, theme: ETheme.system };
+}
+
+function themesReducer(_themes: ThemeState, action: ThemeAction): ThemeState {
+  switch (action.type) {
+    case ETheme.light:
+      return { isDark: false, theme: ETheme.light };
+    case ETheme.dark:
+      return { isDark: true, theme: ETheme.dark };
+    case ETheme.system:
+      return { isDark: prefersDarkTheme.matches, theme: ETheme.system };
+    default: {
+      throw Error("Unknown action: " + action.type);
+    }
+  }
+}

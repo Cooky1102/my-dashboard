@@ -1,6 +1,6 @@
-import { LanguageIcon } from "@heroicons/react/24/solid";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Languages } from "lucide-react";
 
 import { Button } from "@/components/ui/button.tsx";
 import {
@@ -14,6 +14,17 @@ import { iconClasses } from "@/routes/sidebar.tsx";
 import { cn } from "@/lib/utils.ts";
 import { useToast } from "@/components/ui/use-toast";
 
+const languageList = [
+  {
+    name: "繁体中文",
+    value: "zh_HK",
+  },
+  {
+    name: "English",
+    value: "en_US",
+  },
+];
+
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
   const { toast } = useToast();
@@ -22,10 +33,9 @@ const LanguageToggle = () => {
     await i18n.changeLanguage(lng);
     toast({
       duration: 2000,
-      description: <div>123</div>,
       title: (
         <div className="flex gap-3">
-          <CheckCircle2 className="w-6 h-6 text-green-600" />
+          <CheckCircle2 className={cn(iconClasses, "text-green-600")} />
           <span>Language changed</span>
         </div>
       ),
@@ -42,14 +52,23 @@ const LanguageToggle = () => {
         <TooltipTrigger asChild>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
-              <LanguageIcon className={cn(iconClasses)} />
+              <Languages className={cn(iconClasses)} />
               <span className="sr-only">Toggle language</span>
             </Button>
           </DropdownMenuTrigger>
         </TooltipTrigger>
         <DropdownMenuContent align="end" onCloseAutoFocus={handleCloseAutoFocus}>
-          <DropdownMenuItem onClick={() => handleChangeLng("zh_HK")}>繁体中文</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleChangeLng("en_US")}>English</DropdownMenuItem>
+          {languageList.map((item) => (
+            <DropdownMenuItem
+              key={item.value}
+              className={cn({
+                "!text-active": i18n.language === item.value,
+              })}
+              onClick={() => handleChangeLng(item.value)}
+            >
+              {item.name}
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuContent>
         <TooltipContent side="bottom">
           <p>Language</p>
@@ -59,4 +78,4 @@ const LanguageToggle = () => {
   );
 };
 
-export default LanguageToggle;
+export default memo(LanguageToggle);

@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
-import { useTheme } from "@/components/providers/theme-provider";
+import { useTheme, useThemeDispatch } from "@/components/providers/theme-provider";
 import { iconClasses } from "@/routes/sidebar.tsx";
 import { cn } from "@/lib/utils.ts";
 import { ETheme } from "@/types/theme.ts";
@@ -32,7 +32,8 @@ const themeList = [
 ];
 
 export function ThemeModeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
+  const dispatch = useThemeDispatch();
 
   const handleCloseAutoFocus = (event: Event) => {
     event.preventDefault();
@@ -63,10 +64,10 @@ export function ThemeModeToggle() {
           {themeList.map((item) => (
             <DropdownMenuItem
               key={item.value}
-              className={cn("font-medium", {
+              className={cn({
                 "!text-active": theme === item.value,
               })}
-              onClick={() => setTheme(item.value)}
+              onClick={() => dispatch({ type: item.value })}
             >
               {item.icon}
               <span className="ml-2">{item.name}</span>

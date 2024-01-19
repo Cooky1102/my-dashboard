@@ -4,27 +4,27 @@ export const SYSTEM_CONFIG = {
 
 export const THEME_STORAGE_KEY = "dashboard-theme";
 
-// export const nivoDarkTheme = {
-//   textColor: "#ffffff",
-//   fontSize: "14px",
-//   axis: {
-//     domain: {
-//       line: {
-//         stroke: "#777777",
-//         strokeWidth: 1,
-//       },
-//     },
-//     ticks: {
-//       line: {
-//         stroke: "#777777",
-//         strokeWidth: 1,
-//       },
-//     },
-//   },
-//   grid: {
-//     line: {
-//       stroke: "#dddddd",
-//       strokeWidth: 1,
-//     },
-//   },
-// };
+export const nivoDarkTheme = {
+  axis: {
+    legend: {
+      text: {
+        fill: "#F8FAFC",
+      },
+    },
+    ticks: {
+      text: {
+        fill: "#F8FAFC",
+      },
+    },
+  },
+  legends: {
+    text: {
+      fill: "#F8FAFC",
+    },
+  },
+  tooltip: {
+    container: {
+      background: "#1F2937",
+    },
+  },
+};
