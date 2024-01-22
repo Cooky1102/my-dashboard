@@ -13,6 +13,7 @@ import InternalServerErrorPage from "@/app/error/internal-server-error/page.tsx"
 
 const LoginPage = lazy(() => import("@/app/login/page.tsx"));
 const AnalyticsPage = lazy(() => import("@/app/dashboard/analytics/page.tsx"));
+const AccountPage = lazy(() => import("@/app/dashboard/account/page.tsx"));
 const ProductsListPage = lazy(() => import("@/app/products/page.tsx"));
 const CreateProductsPage = lazy(() => import("@/app/products/create/page.tsx"));
 const CalendarPage = lazy(() => import("@/app/calendar/page.tsx"));
@@ -46,6 +47,11 @@ const routes = [
             path: "analytics",
             loader: dashboardLoader,
             element: <AnalyticsPage />,
+          },
+          {
+            path: "account",
+            loader: dashboardLoader,
+            element: <AccountPage />,
           },
           {
             path: "products",

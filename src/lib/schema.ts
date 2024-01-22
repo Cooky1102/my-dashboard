@@ -8,3 +8,12 @@ export const LoginFormSchema = z.object({
     message: "Password must be at least 6 characters.",
   }),
 });
+
+export const UploadAvatarSchema = z.object({
+  avatar: z.instanceof(File).refine(
+    (file) => {
+      return file.size < 2 * 1024 * 1024;
+    },
+    { message: "File size must be less than 2MB." },
+  ),
+});

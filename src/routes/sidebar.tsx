@@ -3,7 +3,7 @@ import {
   Squares2X2Icon,
   CalendarIcon,
 } from "@heroicons/react/24/solid";
-import { XSquare } from "lucide-react";
+import { UserRoundCog, XSquare } from "lucide-react";
 
 import { SidebarRouteConfig } from "@/types/sidebar.ts";
 
@@ -22,6 +22,11 @@ const routes: SidebarRouteConfig[] = [
         path: "/dashboard/analytics",
         name: "Analytics",
         icon: <ChartBarIcon className={`${iconClasses}`} />,
+      },
+      {
+        path: "/dashboard/account",
+        name: "Account",
+        icon: <UserRoundCog className={`${iconClasses}`} />,
       },
     ],
   },
