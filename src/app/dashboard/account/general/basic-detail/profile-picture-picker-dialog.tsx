@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import ReactAvatarEditor from "react-avatar-editor";
 
 import {
   Dialog,
@@ -25,6 +26,7 @@ type Props = {
 
 const ProfilePicturePickerDialog = ({ open, onOpenChange }: Props) => {
   const { toast } = useToast();
+  const editor = useRef<ReactAvatarEditor>(null);
   const [imageSrc, setImageSrc] = useState("");
   const [scale, setScale] = useState(1);
   const [rotate, setRotate] = useState(0);
@@ -57,20 +59,7 @@ const ProfilePicturePickerDialog = ({ open, onOpenChange }: Props) => {
   const handleSave = () => {
     console.log("Save");
     // const img = editor.current?.getImageScaledToCanvas().toDataURL();
-    // const rect = editor.current?.getCroppingRect();
-    //
-    // if (!img || !rect) return;
-    //
-    // setState({
-    //   ...state,
-    //   preview: {
-    //     img,
-    //     rect,
-    //     scale: state.scale,
-    //     width: state.width,
-    //     height: state.height,
-    //   },
-    // });
+    // console.log(img);
   };
 
   return (
@@ -86,7 +75,12 @@ const ProfilePicturePickerDialog = ({ open, onOpenChange }: Props) => {
         <div className="py-5 flex flex-col items-center gap-5">
           {imageSrc ? (
             <>
-              <AvatarEditor imageSrc={imageSrc} scale={scale} rotate={rotate} />
+              <AvatarEditor
+                ref={editor}
+                imageSrc={imageSrc}
+                scale={scale}
+                rotate={rotate}
+              />
               <AvatarEditorOperation
                 scale={scale}
                 rotate={rotate}
