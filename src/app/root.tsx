@@ -5,8 +5,8 @@ import { Suspense } from "react";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import SuspenseFallback from "@/components/skeleton/suspense-fallback.tsx";
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip.tsx";
-import { Toaster } from "@/components/ui/toaster.tsx";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -30,7 +30,7 @@ export default function Root() {
           </Suspense>
         </TooltipProvider>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Toaster />
+        <Toaster richColors />
       </QueryClientProvider>
     </ThemeProvider>
   );

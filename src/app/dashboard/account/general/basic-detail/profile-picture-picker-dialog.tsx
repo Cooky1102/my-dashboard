@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import ReactAvatarEditor from "react-avatar-editor";
+import { toast } from "sonner";
 
 import {
   Dialog,
@@ -11,7 +12,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button.tsx";
-import { useToast } from "@/components/ui/use-toast.ts";
 import { AVATAR_SIZE } from "@/lib/config.ts";
 import { formatFileSize } from "@/lib/utils.ts";
 
@@ -25,7 +25,6 @@ type Props = {
 };
 
 const ProfilePicturePickerDialog = ({ open, onOpenChange }: Props) => {
-  const { toast } = useToast();
   const editor = useRef<ReactAvatarEditor>(null);
   const [imageSrc, setImageSrc] = useState("");
   const [scale, setScale] = useState(1);
@@ -39,10 +38,9 @@ const ProfilePicturePickerDialog = ({ open, onOpenChange }: Props) => {
   const handleAddPhoto = (selectedFile: File | null) => {
     if (selectedFile) {
       if (selectedFile.size > AVATAR_SIZE) {
-        toast({
-          title: "File size too large",
-          description: `Please upload a file less than ${formatFileSize(AVATAR_SIZE)}`,
-        });
+        toast.error(
+          `Please upload a file less than ${formatFileSize(AVATAR_SIZE)}`,
+        );
         return;
       }
 

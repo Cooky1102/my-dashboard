@@ -8,7 +8,7 @@ import { iconClasses } from "@/routes/sidebar.tsx";
 import ProfilePicturePickerDialog from "@/app/dashboard/account/general/basic-detail/profile-picture-picker-dialog.tsx";
 
 const EditProfilePicture = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="flex flex-row items-center gap-5">

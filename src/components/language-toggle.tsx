@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { CheckCircle2, Languages } from "lucide-react";
+import { Languages } from "lucide-react";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button.tsx";
 import {
@@ -9,10 +10,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu.tsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip.tsx";
 import { iconClasses } from "@/routes/sidebar.tsx";
 import { cn } from "@/lib/utils.ts";
-import { useToast } from "@/components/ui/use-toast";
 
 const languageList = [
   {
@@ -27,19 +31,10 @@ const languageList = [
 
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
-  const { toast } = useToast();
 
   const handleChangeLng = async (lng: string) => {
     await i18n.changeLanguage(lng);
-    toast({
-      duration: 2000,
-      title: (
-        <div className="flex gap-3">
-          <CheckCircle2 className={cn(iconClasses, "text-green-600")} />
-          <span>Language changed</span>
-        </div>
-      ),
-    });
+    toast.success("Language changed");
   };
 
   const handleCloseAutoFocus = (event: Event) => {
@@ -57,7 +52,10 @@ const LanguageToggle = () => {
             </Button>
           </DropdownMenuTrigger>
         </TooltipTrigger>
-        <DropdownMenuContent align="end" onCloseAutoFocus={handleCloseAutoFocus}>
+        <DropdownMenuContent
+          align="end"
+          onCloseAutoFocus={handleCloseAutoFocus}
+        >
           {languageList.map((item) => (
             <DropdownMenuItem
               key={item.value}

@@ -1,12 +1,12 @@
 import React, { useCallback, useRef } from "react";
 import { Camera, Plus } from "lucide-react";
-import { FileRejection, useDropzone } from "react-dropzone";
+import { useDropzone } from "react-dropzone";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import { Avatar, AvatarImage } from "@/components/ui/avatar.tsx";
 import UnselectedProfilePicture from "@/assets/unselected-profile-picture.png";
-import { useToast } from "@/components/ui/use-toast.ts";
 import { cn } from "@/lib/utils.ts";
 
 type Props = {
@@ -16,41 +16,23 @@ type Props = {
 
 const ProfilePictureOperation = ({ onAddPhoto, onTakePhoto }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { toast } = useToast();
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       if (acceptedFiles.length !== 1) {
-        toast({
-          title: "Invalid file",
-          description: "Please upload a single file",
-        });
+        toast.error("Please upload a single file");
         return;
       }
 
       onAddPhoto(acceptedFiles[0]);
     },
-    [toast, onAddPhoto],
-  );
-
-  const onDropRejected = useCallback(
-    (fileRejections: FileRejection[]) => {
-      if (fileRejections.length) {
-        toast({
-          title: fileRejections[0].errors[0].code,
-          description: fileRejections[0].errors[0].message,
-        });
-        return;
-      }
-    },
-    [toast],
+    [onAddPhoto],
   );
 
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({
       onDrop,
-      onDropRejected,
-      noClick: true,
+      noClick: true, // Disable click, just use "Add photo" button
       noKeyboard: true,
       multiple: false,
       accept: {
