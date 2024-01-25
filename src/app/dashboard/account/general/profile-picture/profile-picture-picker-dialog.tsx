@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactAvatarEditor from "react-avatar-editor";
 import { toast } from "sonner";
 
@@ -29,6 +29,15 @@ const ProfilePicturePickerDialog = ({ open, onOpenChange }: Props) => {
   const [imageSrc, setImageSrc] = useState("");
   const [scale, setScale] = useState(1);
   const [rotate, setRotate] = useState(0);
+
+  // reset state when dialog is closed
+  useEffect(() => {
+    if (!open) {
+      setImageSrc("");
+      setScale(1);
+      setRotate(0);
+    }
+  }, [open]);
 
   const handleTakePhoto = () => {
     // TODO
@@ -80,6 +89,7 @@ const ProfilePicturePickerDialog = ({ open, onOpenChange }: Props) => {
                 rotate={rotate}
               />
               <AvatarEditorOperation
+                className="xl:px-20"
                 scale={scale}
                 rotate={rotate}
                 onScaleChange={(v) => setScale(v)}

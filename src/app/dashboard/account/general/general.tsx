@@ -1,25 +1,16 @@
 import React from "react";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card.tsx";
-import EditProfilePicture from "@/app/dashboard/account/general/basic-detail/edit-profile-picture.tsx";
+import EditProfilePicture from "@/app/dashboard/account/general/profile-picture/edit-profile-picture.tsx";
+import { Separator } from "@/components/ui/separator.tsx";
+import ProfileForm from "@/app/dashboard/account/general/profile-form.tsx";
 
 const General = () => {
   return (
-    <div className="scroll-py-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Basic details</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <EditProfilePicture />
-        </CardContent>
-      </Card>
-    </div>
+    <section className="space-y-6">
+      <EditProfilePicture />
+      <Separator />
+      <ProfileForm />
+    </section>
   );
 };
 

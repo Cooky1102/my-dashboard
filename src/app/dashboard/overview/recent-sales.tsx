@@ -3,7 +3,7 @@ import { getInitials } from "@/lib/utils.ts";
 
 export function RecentSales() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {data.map((item) => (
         <div key={item.id} className="flex items-center">
           <Avatar className="h-9 w-9">
@@ -12,7 +12,9 @@ export function RecentSales() {
           </Avatar>
           <div className="ml-4 mr-4 space-y-1 overflow-hidden">
             <p className="text-sm font-medium leading-none">{item.name}</p>
-            <p className="text-sm text-muted-foreground truncate">{item.email}</p>
+            <p className="text-sm text-muted-foreground truncate">
+              {item.email}
+            </p>
           </div>
           <div className="ml-auto font-medium shrink-0">
             +${new Intl.NumberFormat().format(item.amount)}

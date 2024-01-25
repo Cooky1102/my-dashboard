@@ -1,11 +1,12 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import { ZoomIn, ZoomOut } from "lucide-react";
 
 import { Button } from "@/components/ui/button.tsx";
 import { Slider } from "@/components/ui/slider.tsx";
 import RotateIcon from "@/components/svg-react/rotate.tsx";
+import { cn } from "@/lib/utils.ts";
 
-type Props = {
+type Props = HTMLAttributes<HTMLDivElement> & {
   scale: number;
   rotate: number;
   onScaleChange: (scale: number) => void;
@@ -13,10 +14,10 @@ type Props = {
 };
 
 const SCALE_MIN = 1;
-const SCALE_MAX = 4;
+const SCALE_MAX = 2;
 
-//  todo add classname   修改黑色那圈
 const AvatarEditorOperation = ({
+  className,
   scale,
   rotate,
   onScaleChange,
@@ -43,7 +44,7 @@ const AvatarEditorOperation = ({
   };
 
   return (
-    <div className="w-full flex flex-row items-center gap-3">
+    <div className={cn("w-full flex flex-row items-center gap-2", className)}>
       <Button
         size="icon"
         variant="ghost"

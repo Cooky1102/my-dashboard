@@ -30,8 +30,8 @@ const LoginPage = () => {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof LoginFormSchema>) {
-    await fakeAuthProvider.signin(values.username);
+  async function onSubmit(formData: z.infer<typeof LoginFormSchema>) {
+    await fakeAuthProvider.signin(formData.username);
     const to = searchParams.get("from") || "/dashboard";
     return navigate(to, { replace: true });
   }
@@ -46,7 +46,7 @@ const LoginPage = () => {
             Sign in to your account
           </p>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
                 name="username"

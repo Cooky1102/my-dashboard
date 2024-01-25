@@ -3,10 +3,11 @@ import { Fragment } from "react";
 import Brand from "@/components/sidebar/brand.tsx";
 import routes from "@/routes/sidebar.tsx";
 import SidebarItem from "@/components/sidebar/sidebar-item.tsx";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Menus = () => {
   return (
-    <div className="h-full w-full p-5 overflow-y-auto dark text-foreground">
+    <ScrollArea className="h-full w-full p-5 dark text-foreground">
       <Brand className="justify-start my-5" />
       {routes.map((route) => (
         <Fragment key={route.category}>
@@ -22,7 +23,7 @@ const Menus = () => {
           </ul>
         </Fragment>
       ))}
-    </div>
+    </ScrollArea>
   );
 };
 

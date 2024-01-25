@@ -9,11 +9,17 @@ export const LoginFormSchema = z.object({
   }),
 });
 
-export const UploadAvatarSchema = z.object({
-  avatar: z.instanceof(File).refine(
-    (file) => {
-      return file.size < 2 * 1024 * 1024;
-    },
-    { message: "File size must be less than 2MB." },
-  ),
+export const BasicDetailsFormSchema = z.object({
+  firstName: z.string().min(2, {
+    message: "first name must be at least 2 characters.",
+  }),
+  lastName: z.string().min(2, {
+    message: "last name must be at least 6 characters.",
+  }),
+  bio: z.string(),
+  country: z.string(),
+  state: z.string(),
+  city: z.string(),
+  zipCode: z.string(),
+  address: z.string(),
 });
